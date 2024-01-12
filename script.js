@@ -21,7 +21,8 @@ const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=
 
     const responseData = await response.json();
     console.log(responseData)
-   temperature.textContent = responseData.main.temp
+   temperature.textContent = Math.round(responseData.main.temp - 273.15)
+   description.textContent = responseData.weather[0].description
     }
     catch(error) {
         console.log('Error fetching info:', error)
