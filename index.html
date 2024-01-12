@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,3 +16,27 @@
     <button id="fetchWeather">Fetch weather</button>
 </body>
 </html>
+
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+    <p class="temperature"></p>
+  <script>
+    const temp = document.querySelector('temperature')
+    const img = document.querySelector('img');
+    fetch(`http://api.weatherapi.com/v1/current.json?key=85a9aed9412947e9b68160302240801&q=Egypt&aqi=no
+`, {mode:'cors'})
+    .then(function(response) {
+      console.log(response.json());
+    });
+  </script>
+</body>
+</html>
+
+-->

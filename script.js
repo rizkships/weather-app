@@ -1,23 +1,30 @@
 
 const searchInput = document.getElementById('searchInput')
 const fetchButton = document.getElementById('fetchWeather')
-const temperature = document.querySelector('temperature') 
-const description = document.querySelector('description')
+const temperature = document.querySelector('.temperature') 
+const description = document.querySelector('.description')
+
+
+
+
+
 
 async function fetchTemperature() {
-    const searchKeyword = searchInput.value 
+    const searchKeyword = searchInput.value || 'London'
 
-    try {
-const response = fetch(`http://api.weatherapi.com/v1/current.json?key=85a9aed9412947e9b68160302240801&q=${searchKeyword}&aqi=no`, {mode:'cors'})
+    try {           /* `http://api.weatherapi.com/v1/current.json?key=85a9aed9412947e9b68160302240801&q=Egypt&aqi=no` , {mode:'cors'}*/
+const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchKeyword}&appid=08f9e3eaad58ef9631cded2e59afad6e`)
     if (!response.ok) {
         throw new Error(`Failed to fetch. status: ${response.status}`);
     }
 
+
     const responseData = await response.json();
-   temperature.src = responseData.location.current.temp_c
+    console.log(responseData)
+   temperature.textContent = responseData.main.temp
     }
     catch(error) {
-        console.log('Error fetching imgage:', error)
+        console.log('Error fetching info:', error)
     }
 }
 
@@ -26,5 +33,7 @@ fetchTemperature()
 fetchButton.addEventListener('click', fetchTemperature);
 
 
-
+/* `https://api.openweathermap.org/data/2.5/weather?q=${searchKeyword}&appid={08f9e3eaad58ef9631cded2e59afad6e}`*/
+ 
+/* temperature.src = responseData.current.condition.temp_c */
 
