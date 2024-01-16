@@ -12,8 +12,7 @@ const weatherIcon = document.getElementById('weather-icon');
 
 async function fetchTemperature() {
 
-    temperature.textContent = '';
-    description.textContent = '';
+    
     
 
     const searchKeyword = searchInput.value || 'London'
@@ -32,6 +31,7 @@ const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=
    description.textContent = responseData.weather[0].description
    const iconCode = responseData.weather[0].icon;
    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
+   showImage()
    
     }
     catch(error) {
@@ -40,6 +40,11 @@ const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=
 }
 
 fetchTemperature()
+
+function showImage() {
+    const weatherIcon = document.getElementById('weather-icon');
+    weatherIcon.style.display = 'block'; // Make the image visible once it's loaded
+}
 
 fetchButton.addEventListener('click', fetchTemperature);
 
